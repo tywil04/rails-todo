@@ -1,12 +1,12 @@
-<div id="<%= dom_id todo %>" class="group bg-gray-100 border-gray-200 px-2.5 py-0.5 text-sm even:bg-gray-200 first:border-t first:rounded-t-[6px] last:rounded-b-[6px] last:border-b border-l border-r duration-100">
+<div id="<%= dom_id todo %>" class="group bg-gray-100 border-gray-200 px-2.5 py-0.5 text-sm even:bg-gray-200 first:border-t first:rounded-t-[6px] last:rounded-b-[6px] last:border-b border-l border-r">
     <turbo-frame id="<%= dom_id todo %>_turbo">
         <div class="flex flex-row">
             <p class="mr-auto truncate <%= todo.completed ? "line-through": "" %>"><%= todo.title %></p>
 
             <div class="ml-auto flex flex-row space-x-2 pointer-events-none opacity-0 group-hover:opacity-100 group-hover:pointer-events-auto duration-100">
                 <%= form_with(model: todo, class: "flex flex-row") do |form| %>
-                <%= form.hidden_field :completed, value: !todo.completed %>
-                <%= form.submit todo.completed ? "Incomplete": "Complete", class: "text-sm text-gray-600 hover:text-blue-600 active:text-blue-700 duration-100 cursor-pointer" %>
+                    <%= form.hidden_field :completed, value: !todo.completed %>
+                    <%= form.submit todo.completed ? "Incomplete": "Complete", class: "text-sm text-gray-600 hover:text-blue-600 active:text-blue-700 duration-100 cursor-pointer" %>
                 <% end %>
 
                 <%= link_to "Edit", edit_todo_path(todo), class: "text-sm text-gray-600 hover:text-yellow-500 active:text-yellow-600 duration-100 cursor-pointer" %>
