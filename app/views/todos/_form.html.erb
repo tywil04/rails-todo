@@ -1,4 +1,4 @@
-<%= form_with(model: todo, class: "contents") do |form| %>
+<%= form_with(model: todo, class: "flex flex-row", id: "form") do |form| %>
   <% if todo.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
@@ -11,7 +11,6 @@
     </div>
   <% end %>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
+  <%= form.text_field :title, autofocus: true, placeholder: "What do you need to do?", class: "px-2.5 py-0.5 rounded-tl-[6px] rounded-bl-[6px] bg-gray-100 border border-r-0 !border-gray-200 h-fit w-full focus:outline-0 focus:ring-0 text-sm" %>
+  <%= form.submit "Create Todo", class: "text-sm font-normal h-fit w-fit border border-blue-700 box-border select-none rounded-tr-[6px] rounded-br-[6px] bg-blue-600 px-2.5 py-0.5 text-white duration-100 hover:bg-blue-700 hover:border-blue-800 active:bg-blue-800 shadow-inner" %>
 <% end %>

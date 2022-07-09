@@ -1,8 +1,6 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing todo</h1>
-
-  <%= render "form", todo: @todo %>
-
-  <%= link_to "Show this todo", @todo, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Back to todos", todos_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-</div>
+<turbo-frame id="<%= dom_id @todo %>_turbo">
+  <%= form_with(model: @todo, class: "flex flex-row", id: "form") do |form| %>
+    <%= form.text_field :title, autofocus: true, placeholder: "What do you need to do?", class: "animate-pulse mr-auto p-0 h-fit w-full focus:outline-0 focus:ring-0 text-sm border-0 bg-transparent m-0" %>
+    <%= form.submit "Save", class: "ml-auto text-sm text-gray-600 hover:text-blue-500 active:text-blue-600 duration-100 cursor-pointer" %>
+  <% end %>
+</turbo-frame>
