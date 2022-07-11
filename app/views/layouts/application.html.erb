@@ -22,11 +22,13 @@
       <div class="right-0 m-4 fixed flex flex-row space-x-2">
         <button data-action="click->theme#toggle" data-theme-target="button" class="text-sm h-fit w-fit border border-gray-200 box-border select-none rounded-[6px] bg-gray-100 px-2.5 py-0.5 text-black duration-100 hover:bg-gray-200 hover:border-gray-300 active:bg-gray-300 shadow-inner dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 dark:border-gray-700 dark:hover:border-gray-600 dark:text-white"></button>
         
+        <!--
         <% if current_user %>
           <%= link_to "Home", todos_path, class: "text-sm h-fit w-fit border border-gray-200 box-border select-none rounded-[6px] bg-gray-100 px-2.5 py-0.5 text-black duration-100 hover:bg-gray-200 hover:border-gray-300 active:bg-gray-300 shadow-inner dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 dark:border-gray-700 dark:hover:border-gray-600 dark:text-white" %>
           <%= link_to "Edit account", edit_user_registration_path, class: "text-sm h-fit w-fit border border-gray-200 box-border select-none rounded-[6px] bg-gray-100 px-2.5 py-0.5 text-black duration-100 hover:bg-gray-200 hover:border-gray-300 active:bg-gray-300 shadow-inner dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 dark:border-gray-700 dark:hover:border-gray-600 dark:text-white" %>
           <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "text-sm h-fit w-fit border border-gray-200 box-border select-none rounded-[6px] bg-gray-100 px-2.5 py-0.5 text-black duration-100 hover:bg-gray-200 hover:border-gray-300 active:bg-gray-300 shadow-inner dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 dark:border-gray-700 dark:hover:border-gray-600 dark:text-white" %>
         <% end %>
+        -->
       </div>
 
       <%= yield %>
