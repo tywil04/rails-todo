@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 <div class="px-[30%] py-28 flex flex-col flex-grow text-sm space-y-4 w-full">
   <div>
     <h1 class="font-bold text-2xl my-1 dark:text-white pb-1">
       Hello <%= current_user[:name].capitalize %>, here's what you need to do.
     </h1>
+=======
+<main data-controller="theme" class="dark:bg-gray-900 min-h-full min-w-full">
+  <button data-action="click->theme#toggle" data-theme-target="button" class="right-0 m-4 fixed text-sm h-fit w-fit border border-gray-200 box-border select-none rounded-[6px] bg-gray-100 px-2.5 py-0.5 text-black duration-100 hover:bg-gray-200 hover:border-gray-300 active:bg-gray-300 shadow-inner dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-600 dark:border-gray-700 dark:hover:border-gray-600 dark:text-white"></button>
+>>>>>>> parent of 3d7ce28 (implemented devise account auth)
 
-    <%= render "form", todo: Todo.new %>
+  <div class="px-[30%] py-28 flex flex-col flex-grow text-sm space-y-4 w-full">
+    <div>
+      <h1 class="font-bold text-2xl my-1 dark:text-white">Todos</h1>
+
+      <%= render "form", todo: Todo.new %>
+    </div>
+    
+    <div id="todos">
+      <%= render @todos %>
+    </div>
   </div>
-  
-  <div id="todos">
-    <%= render @todos %>
-  </div>
-</div>
+</main>
