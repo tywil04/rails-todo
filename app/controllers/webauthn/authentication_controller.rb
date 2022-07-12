@@ -11,7 +11,6 @@ class Webauthn::AuthenticationController < ApplicationController
 
     def verify
         publicKeyCredential = JSON.parse(params["publicKeyCredential"]);
-        puts publicKeyCredential
         webauthn_credential = WebAuthn::Credential.from_get(publicKeyCredential);
         stored_credentials = Credential.where(webauthn_id: webauthn_credential.id);
         
@@ -34,8 +33,6 @@ class Webauthn::AuthenticationController < ApplicationController
             rescue WebAuthn::Error => e
             end
         end
-
-        puts accountFound
 
         if accountFound
             redirect_to todos_path

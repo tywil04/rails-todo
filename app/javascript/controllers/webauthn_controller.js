@@ -62,11 +62,7 @@ export default class extends Controller {
 
         optionsResponse.then(response => response.json().then(options => {
             options.challenge = base64urlToBuffer(options.challenge)
-            //options.user.id = base64urlToBuffer(options.user.id)
-
             options.allowCredentials.forEach(credential => credential.id = base64urlToBuffer(credential.id))
-
-            console.log(options)
 
             const credential = navigator.credentials.get({
                 publicKey: options,
@@ -85,9 +81,6 @@ export default class extends Controller {
                     type: publicKeyCredential.type,
                     clientExtensionResults: publicKeyCredential.getClientExtensionResults(),
                 }
-
-                console.log(publicKeyCredential)
-                console.log(jsonPublicKeyCredential)
 
                 fetch(`/webauthn/session/verify?publicKeyCredential=${JSON.stringify(jsonPublicKeyCredential)}`).then(() => window.location = "/")
             })
