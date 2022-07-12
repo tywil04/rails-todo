@@ -11,13 +11,16 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_07_11_152144) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "credentials", force: :cascade do |t|
     t.string "webauthn_id"
     t.string "public_key"
     t.integer "sign_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_credentials_on_user_id"
   end
 
@@ -26,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_152144) do
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_todos_on_user_id"
   end
 
