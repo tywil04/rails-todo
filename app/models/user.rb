@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :todos
+  has_many :credentials
+
+  serialize :credentials, Hash
 end

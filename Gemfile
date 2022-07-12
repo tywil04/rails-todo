@@ -75,3 +75,5 @@ group :test do
 end
 
 gem "devise", "~> 4.8"
+
+gem "webauthn", "~> 2.5"

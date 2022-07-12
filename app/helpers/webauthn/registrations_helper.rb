@@ -1,0 +1,2 @@
+module Webauthn::RegistrationsHelper
+end
