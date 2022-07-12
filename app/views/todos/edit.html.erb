@@ -1,6 +1,6 @@
 <turbo-frame id="<%= dom_id @todo %>_turbo">
   <%= form_with(model: @todo, class: "flex flex-row", id: "form") do |form| %>
     <%= form.text_field :title, autofocus: true, placeholder: "What do you need to do?", class: "animate-pulse mr-auto p-0 h-fit w-full focus:outline-0 focus:ring-0 text-sm border-0 bg-transparent m-0" %>
-    <%= form.submit "Save", class: "ml-auto text-sm text-gray-600 hover:text-blue-500 active:text-blue-600 duration-100 cursor-pointer" %>
+    <%= form.submit "Save", class: "ml-auto text-sm text-gray-600 hover:text-blue-500 active:text-blue-600 duration-100 cursor-pointer dark:text-gray-400 dark:hover:text-blue-500 dark:active:text-blue-600" %>
   <% end %>
 </turbo-frame>
