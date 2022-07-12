@@ -272,6 +272,7 @@ DEPENDENCIES
   devise (~> 4.8)
   importmap-rails
   jbuilder
+  openssl (~> 2.2)
   pg (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.3)

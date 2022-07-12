@@ -76,3 +76,5 @@ gem "devise", "~> 4.8"
 gem "webauthn", "~> 2.5"
 
 gem "pg", "~> 1.4"
+
+gem "openssl", "~> 2.2"
