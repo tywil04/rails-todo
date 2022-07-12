@@ -268,11 +268,13 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  cose (~> 1.2)
   debug
   devise (~> 4.8)
   importmap-rails
   jbuilder
   openssl (~> 2.2)
+  openssl-signature_algorithm (~> 1.2)
   pg (~> 1.4)
   puma (~> 5.0)
   rails (~> 7.0.3)

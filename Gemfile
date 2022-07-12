@@ -78,3 +78,7 @@ gem "webauthn", "~> 2.5"
 gem "pg", "~> 1.4"
 
 gem "openssl", "~> 2.2"
+
+gem "openssl-signature_algorithm", "~> 1.2"
+
+gem "cose", "~> 1.2"
