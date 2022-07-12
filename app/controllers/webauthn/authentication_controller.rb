@@ -25,7 +25,7 @@ class Webauthn::AuthenticationController < ApplicationController
 
                 stored_credential.update!(sign_count: webauthn_credential.sign_count)
 
-                sign_in stored_credential.user
+                sign_in stored_credential.user # Devise sign in method
 
                 accountFound = true;
 
