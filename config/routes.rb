@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get "/webauthn/register", to: "webauthn/registrations#challenge"
   get "/webauthn/register/verify", to: "webauthn/registrations#verify"
+  get "/webauthn/session", to: "webauthn/authentication#challenge"
+  get "/webauthn/session/verify", to: "webauthn/authentication#verify"
 
   root "todos#index"
 end

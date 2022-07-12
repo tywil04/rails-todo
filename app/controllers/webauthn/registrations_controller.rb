@@ -1,6 +1,7 @@
 require "json"
 
 class Webauthn::RegistrationsController < ApplicationController
+    # GET /webauthn/register
     def challenge
         if !current_user.webauthn_id
             current_user.update(webauthn_id: WebAuthn.generate_user_id[0..63])
@@ -12,7 +13,7 @@ class Webauthn::RegistrationsController < ApplicationController
                 name: current_user.email,
                 display_name: current_user.name,
             },
-            exclude: Credential.where(user: current_user).map { |c| c.webauthn_id }
+            exclude: Credential.where(user: current_user).map { |c| c.webauthn_id },
         )
 
         session[:creation_challenge] = options.challenge;
@@ -23,6 +24,7 @@ class Webauthn::RegistrationsController < ApplicationController
         end
     end
 
+    # GET /webauthn/register/verify
     def verify
         publicKeyCredential = JSON.parse(params["publicKeyCredential"]);
         webauthn_credential = WebAuthn::Credential.from_create(publicKeyCredential);

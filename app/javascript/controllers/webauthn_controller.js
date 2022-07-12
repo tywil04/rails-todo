@@ -27,22 +27,19 @@ function bufferToBase64url(buffer) {
 }
 
 export default class extends Controller {
-    static targets = ["button", "output"];
-
-    start() {
+    register() {
         var optionsResponse = fetch("/webauthn/register.json");
 
         optionsResponse.then(response => response.json().then(options => {
             options.challenge = base64urlToBuffer(options.challenge)
             options.user.id = base64urlToBuffer(options.user.id)
+            options.excludeCredentials.forEach(exclude => exclude.id = base64urlToBuffer(exclude.id))
 
-            console.log(options)
             const credential = navigator.credentials.create({
                 publicKey: options,
             })
 
             credential.then(publicKeyCredential => {
-                console.log(publicKeyCredential)
                 var jsonPublicKeyCredential = {
                     authenticatorAttachment: publicKeyCredential.authenticatorAttachment,
                     id: publicKeyCredential.id,
@@ -55,8 +52,44 @@ export default class extends Controller {
                     clientExtensionResults: publicKeyCredential.getClientExtensionResults(),
                 }
 
-                console.log(jsonPublicKeyCredential)
                 fetch(`/webauthn/register/verify?publicKeyCredential=${JSON.stringify(jsonPublicKeyCredential)}`)
+            })
+        }))
+    }
+
+    authenticate() {
+        var optionsResponse = fetch("/webauthn/session.json");
+
+        optionsResponse.then(response => response.json().then(options => {
+            options.challenge = base64urlToBuffer(options.challenge)
+            //options.user.id = base64urlToBuffer(options.user.id)
+
+            options.allowCredentials.forEach(credential => credential.id = base64urlToBuffer(credential.id))
+
+            console.log(options)
+
+            const credential = navigator.credentials.get({
+                publicKey: options,
+            })        
+            
+            credential.then(publicKeyCredential => {
+                var jsonPublicKeyCredential = {
+                    authenticatorAttachment: publicKeyCredential.authenticatorAttachment,
+                    id: publicKeyCredential.id,
+                    rawId: bufferToBase64url(publicKeyCredential.rawId),
+                    response: {
+                        authenticatorData: bufferToBase64url(publicKeyCredential.response.authenticatorData),
+                        clientDataJSON: bufferToBase64url(publicKeyCredential.response.clientDataJSON),
+                        signature: bufferToBase64url(publicKeyCredential.response.signature),
+                    },
+                    type: publicKeyCredential.type,
+                    clientExtensionResults: publicKeyCredential.getClientExtensionResults(),
+                }
+
+                console.log(publicKeyCredential)
+                console.log(jsonPublicKeyCredential)
+
+                fetch(`/webauthn/session/verify?publicKeyCredential=${JSON.stringify(jsonPublicKeyCredential)}`).then(() => window.location = "/")
             })
         }))
     }
