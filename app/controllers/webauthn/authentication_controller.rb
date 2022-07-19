@@ -14,7 +14,6 @@ class Webauthn::AuthenticationController < ApplicationController
         webauthn_credential = WebAuthn::Credential.from_get(publicKeyCredential);
         stored_credentials = Credential.where(webauthn_id: webauthn_credential.id);
         
-        accountFound = false
         stored_credentials.each do |stored_credential|
             begin
                 webauthn_credential.verify(
@@ -27,15 +26,9 @@ class Webauthn::AuthenticationController < ApplicationController
 
                 sign_in stored_credential.user # Devise sign in method
 
-                accountFound = true;
-
                 break
             rescue WebAuthn::Error => e
             end
-        end
-
-        if accountFound
-            redirect_to todos_path
         end
     end
 end

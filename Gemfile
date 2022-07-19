@@ -73,7 +73,7 @@ end
 
 gem "devise", "~> 4.8"
 
-gem "webauthn", "~> 2.5", git: "https://github.com/tywil04/webauthn-ruby", branch: "master"
+gem "webauthn", "~> 2.5.2"
 
 gem "pg", "~> 1.4"
 
